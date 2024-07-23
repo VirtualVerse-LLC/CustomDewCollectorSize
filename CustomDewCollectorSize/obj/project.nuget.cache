@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "hqYgLJeontY=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Omar\\source\\repos\\CustomDewCollectorSize\\CustomDewCollectorSize\\CustomDewCollectorSize.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Omar\\.nuget\\packages\\lib.harmony\\2.3.3\\lib.harmony.2.3.3.nupkg.sha512"
+  ],
+  "logs": []
+}
