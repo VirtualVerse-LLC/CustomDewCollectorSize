@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CustomDewCollectorSize.BlockUtils;
+using CustomDewCollectorSize;
 
 public class InitializeCommand : ConsoleCmdAbstract
 {
@@ -46,36 +47,31 @@ public class InitializeCommand : ConsoleCmdAbstract
         while (chunk == null)
         {
             chunk = GameManager.Instance.World.GetChunkSync(playerChunkPos.x, playerChunkPos.z) as Chunk;
-            Log.Out($"Loading chunk at {playerChunkPos.x}, {playerChunkPos.y}");
             yield return null;
         }
-
         try
         {
-            Log.Out($"Retrieved player chunk at their position with ClrIdx {chunk.ClrIdx}");
-
             try
             {
                 Block dewCollectorBlock = BlockUtils.GetBlock("cntDewCollector");
                 if ( dewCollectorBlock != null )
                 {
-                    Log.Out($"Block cntDewCollector found with ID {dewCollectorBlock.blockID}");
                     GameManager.Instance.World.SetBlockRPC(chunk.ClrIdx, playerPosition, dewCollectorBlock.ToBlockValue());
-                    Log.Out("Dew collector placed successfully.");
+                    SdtdConsole.Instance.Output("Dew collector placed successfully.");
                 }
                 else
                 {
-                    Log.Out($"Block with name cntDewCollector not found.");
+                    SdtdConsole.Instance.Output("Failed to place dew collector block.");
                 }
             }
             catch (Exception e)
             {
-                Log.Out($"Error setting block to dew collector: {e.Message}");
+                SdtdConsole.Instance.Output($"Error setting block to dew collector: {e.Message}");
             }
         }
         catch (Exception e)
         {
-            Log.Out($"Error retrieving player chunk: {e.Message}");
+            SdtdConsole.Instance.Output($"Error retrieving player chunk: {e.Message}");
         }
     }
 }

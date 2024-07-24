@@ -1,6 +1,8 @@
 ﻿using CustomDewCollectorSize;
+using CustomDewCollectorSize.BlockUtils;
 using HarmonyLib;
 using System;
+using System.Collections.Generic;
 
 
 [HarmonyPatch(typeof(TileEntityDewCollector), MethodType.Constructor, new Type[] { typeof(Chunk) })]
@@ -21,22 +23,30 @@ public class TileEntityDewCollectorSizePatch2
     }
 }
 
-[HarmonyPatch(typeof(NetPackageTileEntity), nameof(NetPackageTileEntity.Setup), new Type[] { typeof(TileEntity), typeof(TileEntity.StreamModeWrite), typeof(byte) })]
+[HarmonyPatch(typeof(NetPackageSetBlock), nameof(NetPackageSetBlock.ProcessPackage))]
 public class TileEntityDewCollectorSizePatch3
 {
-    static void Postfix(NetPackageTileEntity __instance, TileEntity _te, TileEntity.StreamModeWrite _eStreamMode, byte _handle)
+    static bool Prefix(ref List<BlockChangeInfo> ___blockChanges)
     {
-        // this is getting called every tic to update the dew collector
-        TileEntityDewCollector dewCollector = _te as TileEntityDewCollector;
-        if (dewCollector != null)
+        for (int x = 0; x < ___blockChanges.Count; x++)
         {
-            Vector2i expectedSize = new Vector2i(ModLoader.Columns, ModLoader.Rows);
-            if (!dewCollector.GetContainerSize().Equals(expectedSize))
+            BlockChangeInfo blockChange = ___blockChanges[x];
+            if (blockChange != null)
             {
-                dewCollector.SetContainerSize(expectedSize);
-                dewCollector.setModified();
+                BlockValue dewCollectorBlockValue = BlockUtils.GetBlock("cntDewCollector").ToBlockValue();
+                BlockValue blockChangeValue = blockChange.blockValue;
+                if (blockChangeValue.Equals(dewCollectorBlockValue))
+                {
+                    // remove original block
+                    ___blockChanges.RemoveAt(x);
+
+                    // place block from server
+                    GameManager.Instance.World.SetBlockRPC(blockChange.clrIdx, blockChange.pos, dewCollectorBlockValue);
+                    Log.Out("Replaced player placed dew collector block with server placed dew collector");
+                }
             }
         }
+        return true;
     }
 }
 
