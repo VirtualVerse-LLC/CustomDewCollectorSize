@@ -15,7 +15,7 @@ Tested on v1.0
 ## Installation
 
 1. **Download the Mod**:
-   - Go to the [Releases](https://github.com/yourusername/CustomDewCollector/releases) section and download the latest ZIP file.
+   - Go to the [Releases](https://github.com/VirtualVerse-LLC/CustomDewCollectorSize/releases/) section and download the latest ZIP file.
 
 2. **Install the Mod**:
    - Extract the contents of the ZIP file and place the `CustomDewCollector` folder into your `Mods` directory located in the game’s root directory.
