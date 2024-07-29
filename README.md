@@ -4,6 +4,9 @@
 
 CustomDewCollector is a mod for **7 Days to Die** that empowers server admins with the ability to customize dew collector slot sizes and increase the rate at which water is collected. This makes dew collectors a more viable option in the early stages of the game, providing players with easier access to water resources.
 
+## Compatability
+Tested on v1.0
+
 ## Features
 
 - **Configurable Slot Sizes**: Adjust the slot sizes of dew collectors to suit your server's gameplay style and balance needs.
