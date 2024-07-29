@@ -51,7 +51,7 @@ Example
 
 The `Config/blocks.xml` file allows you to customize the collection rate :
 
-- `MinConvertTime`: Minimum amount of time to obtain water. <!-- 3600 Game Seconds = 1 Game Hours -->
+- `MinConvertTime`: Minimum amount of time to obtain water, 600 Game Seconds = 1 Game Hours.
 - `MaxConvertTime`: Maximum amount of time to obtain water. 
 
 Example:
