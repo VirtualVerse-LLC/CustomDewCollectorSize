@@ -9,7 +9,6 @@ namespace CustomDewCollectorSize
     public class ModLoader : IModApi
     {
         public static string Version = "v1.0";
-        public static bool IsEnabled { get; set; }
         public static int Columns { get; set; }
         public static int Rows { get; set; }
 
@@ -19,7 +18,6 @@ namespace CustomDewCollectorSize
             var harmony = new Harmony(_modInstance.Name);
             harmony.PatchAll(Assembly.GetExecutingAssembly());
             Log.Out($"CustomDewCollectorSize {Version} Loaded");
-            Log.Out($"CustomDewCollectorSize mod is {(IsEnabled ? "enabled" : "disabled")}.");
         }
 
         public static void LoadConfig()
@@ -28,12 +26,6 @@ namespace CustomDewCollectorSize
             if (File.Exists(configPath))
             {
                 var configXml = XDocument.Load(configPath);
-                // load enabled
-                var enabledElement = configXml.Root.Element("enabled");
-                if (enabledElement != null && bool.TryParse(enabledElement.Value, out bool isEnabled))
-                {
-                    IsEnabled = isEnabled;
-                }
                 // Load columns
                 var columnsElement = configXml.Root.Element("columns");
                 if (columnsElement != null && int.TryParse(columnsElement.Value, out int columns))
