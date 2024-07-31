@@ -56,7 +56,7 @@ The `Config/blocks.xml` file allows you to customize the collection rate :
 
 Example:
 ```xml
-<set xpath="/blocks/block[@name='cntDewCollector']/@MinConvertTime">1800</set>
-<set xpath="/blocks/block[@name='cntDewCollector']/@MaxConvertTime">3600</set>
+<set xpath="/blocks/block[@name='cntDewCollector']/property[@name='MinConvertTime']/@value">1800</set>
+<set xpath="/blocks/block[@name='cntDewCollector']/property[@name='MaxConvertTime']/@value">3600</set>
 ```
 
