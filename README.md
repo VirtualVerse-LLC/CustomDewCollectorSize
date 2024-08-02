@@ -48,15 +48,3 @@ Example
 	<set xpath="//window[@name='windowDewCollector']/rect/grid/@rows">2</set>
 </configs>
 ```
-
-The `Config/blocks.xml` file allows you to customize the collection rate :
-
-- `MinConvertTime`: Minimum amount of time to obtain water, 600 Game Seconds = 1 Game Hours.
-- `MaxConvertTime`: Maximum amount of time to obtain water. 
-
-Example:
-```xml
-<set xpath="/blocks/block[@name='cntDewCollector']/property[@name='MinConvertTime']/@value">1800</set>
-<set xpath="/blocks/block[@name='cntDewCollector']/property[@name='MaxConvertTime']/@value">3600</set>
-```
-
