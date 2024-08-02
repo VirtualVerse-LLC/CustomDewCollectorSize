@@ -28,8 +28,6 @@ The `config.xml` file allows you to customize the following settings:
 - `Columns`: Defines the number of slot columns available in the dew collector.
 - `Rows`: Defines the number of slot rows available in the dew collector.
 
-The
-
 Example:
 
 ```xml
