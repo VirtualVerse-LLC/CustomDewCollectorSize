@@ -41,8 +41,18 @@ The `Config/XUi/windows.xml` needs to match your `config.xml` file :
 
 Example
 ```xml
-<configs>
+<config>
 	<set xpath="//window[@name='windowDewCollector']/rect/grid/@cols">3</set>
 	<set xpath="//window[@name='windowDewCollector']/rect/grid/@rows">2</set>
-</configs>
+</config>
+```
+
+The `Config/blocks.xml` can be used to modify the collection rate :
+
+Example
+```xml
+<config>
+    <set xpath="/blocks/block[@name='cntDewCollector']/property[@name='MinConvertTime']/@value">1800</set>
+    <set xpath="/blocks/block[@name='cntDewCollector']/property[@name='MaxConvertTime']/@value">3600</set>
+</config>
 ```
